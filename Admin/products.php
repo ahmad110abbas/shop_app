@@ -145,18 +145,10 @@ if (isset($_POST['product_name'])) {
 								echo "<tbody>";
 								if ($result->num_rows > 0) {
 									while ($row = $result->fetch_assoc()) {
-
-										// print_r($row['product_id']);
-										// print_r($row['category_id']);
-										// print_r($row['name']);
-										// print_r($row['price']);
-										// print_r($row['image']);
-										// print_r($row['description']);
-										// echo "<br>";
 										echo "<tr>";
 										echo '<td><input type="checkbox" /></td>';
 										echo "<td>",$row['product_id'],"</td>";
-										echo '<td><a href="#" title="title">',$row['name'],'t</a></td>';
+										echo '<td><a href="#" title="title">',$row['name'],'</a></td>';
 										echo "<td>",$row['price'],"</td>";
 										echo "<td>",$row['category_id'],"</td>";
 										echo '<td><a href="#" title="Edit"><img src="resources/images/icons/pencil.png" alt="Edit" /></a><a href="#" title="Delete"><img src="resources/images/icons/cross.png" alt="Delete" /></a><a href="#" title="Edit Meta"><img src="resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a></td></tr>';

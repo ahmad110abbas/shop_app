@@ -87,20 +87,22 @@ if (isset($_POST['category'])) {
 								</tr>
 							</tfoot>
 						 
-							<tbody>
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>Lorem ipsum dolor</td>
-									<td><a href="#" title="title">Sit amet</a></td>
-									<td>
-										<!-- Icons -->
-										 <a href="#" title="Edit"><img src="resources/images/icons/pencil.png" alt="Edit" /></a>
-										 <a href="#" title="Delete"><img src="resources/images/icons/cross.png" alt="Delete" /></a> 
-										 <a href="#" title="Edit Meta"><img src="resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
-									</td>
-								</tr>
-							</tbody>
-							
+							<?php  
+
+								$sql = "SELECT categoryid,category FROM categories";
+								$result = $conn->query($sql);
+								echo "<tbody>";
+								if ($result->num_rows > 0) {
+									while ($row = $result->fetch_assoc()) {
+										echo "<tr>";
+										echo '<td><input type="checkbox" /></td>';
+										echo "<td>",$row['categoryid'],"</td>";
+										echo '<td><a href="#" title="title">',$row['category'],'</a></td>';
+										echo '<td><a href="#" title="Edit"><img src="resources/images/icons/pencil.png" alt="Edit" /></a><a href="#" title="Delete"><img src="resources/images/icons/cross.png" alt="Delete" /></a><a href="#" title="Edit Meta"><img src="resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a></td></tr>';
+									}
+								}
+								echo "</tbody>";
+							?>
 						</table>
 						
 					</div> <!-- End #tab1 -->
