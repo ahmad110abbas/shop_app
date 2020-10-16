@@ -2,6 +2,22 @@
 	include 'header.php';
 	include 'sidebar.php';
 	include 'config.php';
+	$errors=array();
+	$message='';
+
+	if (isset($_POST['category'])) {
+		$category=isset($_POST['category'])?$_POST['category']:'';
+	}
+if (isset($_POST['category'])) {
+	$sql = "INSERT INTO categories (category) VALUES ('".$category."')";
+	if ($conn->query($sql) === true) {
+		echo "Record Added";
+	} else{
+		$errors[]=array('input'=>'form','msg'=>$conn->error);
+		print_r($errors);
+		die();
+	}
+}
  ?>
 		
 		<div id="main-content"> <!-- Main Content Section with everything -->
@@ -91,18 +107,13 @@
 					
 					<div class="tab-content" id="tab2">
 					
-						<form action="#" method="post">
+						<form action="categories.php" method="post">
 							
 							<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
 								
 								<p>
-									<label>Category ID</label>
-										<input class="text-input small-input" type="text" id="small-input" name="small-input" /> 
-								</p>
-								
-								<p>
 									<label>Category Name</label>
-									<input class="text-input medium-input datepicker" type="text" id="medium-input" name="medium-input" /> 
+									<input class="text-input medium-input datepicker" type="text" id="medium-input" name="category" /> 
 								</p>
 								
 								<p>

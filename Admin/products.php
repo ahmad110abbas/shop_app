@@ -52,10 +52,8 @@ if (isset($_POST['product_name'])) {
 	} else{
 		$errors[]=array('input'=>'form','msg'=>$conn->error);
 		print_r($errors);
-		print_r($category_id);
 		die();
 	}
-	// $conn->close();
 }
  ?>
 		
