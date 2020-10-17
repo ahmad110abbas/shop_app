@@ -1,3 +1,14 @@
+<?php 
+  session_start();
+  include 'config.php';
+  if (isset($_GET['id'])) {
+    $_SESSION['cart'][] = $_GET;
+  }
+  // session_destroy();
+ ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -138,7 +149,7 @@
                 <a class="aa-cart-link" href="#">
                   <span class="fa fa-shopping-basket"></span>
                   <span class="aa-cart-title">SHOPPING CART</span>
-                  <span class="aa-cart-notify">2</span>
+                  <span class="aa-cart-notify"><?php print_r(sizeof($_SESSION['cart'])); ?></span>
                 </a>
                 <div class="aa-cartbox-summary">
                   <ul>
