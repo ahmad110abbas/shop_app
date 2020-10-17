@@ -5,6 +5,7 @@
 	$errors=array();
 	$message='';
 	$category_id;
+	$category='';
 
 	if (isset($_POST['product_name'])) {
 		$product_name=isset($_POST['product_name'])?$_POST['product_name']:'';
@@ -46,7 +47,7 @@
 	}
 
 if (isset($_POST['product_name'])) {
-	$sql = "INSERT INTO products (category_id, name, price, image, description) VALUES ('".$category_id."', '".$product_name."' , '".$product_price."','".$product_image."','".$description."')";
+	$sql = "INSERT INTO products (category_id, name, price, image, description) VALUES ('".$category."', '".$product_name."' , '".$product_price."','".$product_image."','".$description."')";
 	if ($conn->query($sql) === true) {
 		echo "Record Added";
 	} else{
