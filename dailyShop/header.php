@@ -4,7 +4,19 @@
   if (isset($_GET['id'])) {
     $_SESSION['cart'][] = $_GET;
   }
-  // session_destroy();
+  // if (sizeof($_SESSION['cart'])==3) {
+  //   foreach ($_SESSION as $key => $value) {
+  //     foreach ($value as $key => $value1) {
+  //       foreach ($value1 as $key => $value) {
+  //         echo "<pre>";
+  //         print_r($value);
+  //         echo "</pre>";
+  //       }
+  //     }
+  //   }
+  //   // die();
+  // }
+  session_destroy();
  ?>
 
 
@@ -153,22 +165,17 @@
                 </a>
                 <div class="aa-cartbox-summary">
                   <ul>
-                    <li>
-                      <a class="aa-cartbox-img" href="#"><img src="img/woman-small-2.jpg" alt="img"></a>
-                      <div class="aa-cartbox-info">
-                        <h4><a href="#">Product Name</a></h4>
-                        <p>1 x $250</p>
-                      </div>
-                      <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
-                    </li>
-                    <li>
-                      <a class="aa-cartbox-img" href="#"><img src="img/woman-small-1.jpg" alt="img"></a>
-                      <div class="aa-cartbox-info">
-                        <h4><a href="#">Product Name</a></h4>
-                        <p>1 x $250</p>
-                      </div>
-                      <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
-                    </li>                    
+
+                    <?php 
+                      foreach ($_SESSION as $key => $value) {
+                        foreach ($value as $key => $value1) {
+                          foreach ($value1 as $key => $value) {
+                            echo '<li><a class="aa-cartbox-img" href="#"><img src="img/woman-small-2.jpg" alt="img"></a><div class="aa-cartbox-info"><h4><a href="#">',$value,'</a></h4><p>1 x $250</p></div><a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a></li>';
+                          }
+                        }
+                      }
+                     ?>                    
+                    
                     <li>
                       <span class="aa-cartbox-total-title">
                         Total
