@@ -4,19 +4,6 @@
   if (isset($_GET['id'])) {
     $_SESSION['cart'][] = $_GET;
   }
-  // if (sizeof($_SESSION['cart'])==3) {
-  //   foreach ($_SESSION as $key => $value) {
-  //     foreach ($value as $key => $value1) {
-  //       foreach ($value1 as $key => $value) {
-  //         echo "<pre>";
-  //         print_r($value);
-  //         echo "</pre>";
-  //       }
-  //     }
-  //   }
-  //   // die();
-  // }
-  session_destroy();
  ?>
 
 
@@ -53,7 +40,7 @@
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -66,11 +53,11 @@
   <!-- Only for product page body tag have to added .productPage class -->
   <body class="productPage">  
    <!-- wpf loader Two -->
-    <div id="wpf-loader-two">          
+<!--     <div id="wpf-loader-two">          
       <div class="wpf-loader-two-inner">
         <span>Loading</span>
       </div>
-    </div> 
+    </div>  -->
     <!-- / wpf loader Two -->       
  <!-- SCROLL TOP BUTTON -->
     <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
