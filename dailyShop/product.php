@@ -22,7 +22,24 @@
                 </form>
                 <?php 
                   if (isset($_GET['sortby'])) {
-                    print_r($_GET);
+                    if ($_GET['sortby']==name) {
+                      $sql = "SELECT product_id,category_id,name,price,image,description FROM products ORDER BY name";
+                      $result = $conn->query($sql);
+                      if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                          echo '<li><figure><a class="aa-product-img" href="#"><img src="img/',$row['category_id'],'/',$row['image'],'" alt="polo shirt img"></a><a class="aa-add-card-btn"href=product.php?id=',$row['name'],'><span class="fa fa-shopping-cart"></span>Add To Cart</a><figcaption><h4 class="aa-product-title"><a href="#">',$row['name'],'</a></h4><span class="aa-product-price">$',$row['price'],'</span><span class="aa-product-price"><del>$65.50</del></span><p class="aa-product-descrip">',$row['description'],'</p></figcaption></figure><div class="aa-product-hvr-content"><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a><a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a></div><span class="aa-badge aa-sale" href="#">SALE!</span></li>';
+                        }
+                      }
+                    }
+                    if ($_GET['sortby']==name) {
+                      $sql = "SELECT product_id,category_id,name,price,image,description FROM products ORDER BY price";
+                      $result = $conn->query($sql);
+                      if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                          echo '<li><figure><a class="aa-product-img" href="#"><img src="img/',$row['category_id'],'/',$row['image'],'" alt="polo shirt img"></a><a class="aa-add-card-btn"href=product.php?id=',$row['name'],'><span class="fa fa-shopping-cart"></span>Add To Cart</a><figcaption><h4 class="aa-product-title"><a href="#">',$row['name'],'</a></h4><span class="aa-product-price">$',$row['price'],'</span><span class="aa-product-price"><del>$65.50</del></span><p class="aa-product-descrip">',$row['description'],'</p></figcaption></figure><div class="aa-product-hvr-content"><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a><a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a></div><span class="aa-badge aa-sale" href="#">SALE!</span></li>';
+                        }
+                      }
+                    }
                   }
                  ?>
                 <form action="" class="aa-show-form">
@@ -182,7 +199,7 @@
 						$result = $conn->query($sql);
 						if ($result->num_rows > 0) {
 							while ($row = $result->fetch_assoc()) {
-								echo '<li><a href="">',$row['category'],'</a></li>';
+								echo '<li><a class="category" href="">',$row['category'],'</a></li>';
 							}
 						}
 					?> 
@@ -248,20 +265,10 @@
 	include 'footer.php';
  ?>
 
-<!--  <script>
-    $(document).ready(function(){
-      $('.sortbyname').click(function(){
-        console.log('name clicked');
-      });
+<script>
+  $(document).ready(function(){
+    $('.category').click(function(){
+      console.log('clicked');
     });
-    $(document).ready(function(){
-      $('.sortbyprice').click(function(){
-        console.log('price clicked');
-      });
-    });
- </script> -->
-<!--  <script>
-   $( ".sortbyname" ).on( "click", function() {
-    console.log('name clicked');
-    });
- </script> -->
+  });
+</script>
